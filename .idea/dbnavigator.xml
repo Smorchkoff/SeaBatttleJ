@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="65827dc7-9c27-4b5a-be8a-6d3cd941493f">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
+      <console name="Connection" type="STANDARD" schema="userdb" session="Main"><![CDATA[SELECT * FROM users]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -23,7 +23,7 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="65827dc7-9c27-4b5a-be8a-6d3cd941493f" dataset="userdb.users" active-filter-id="" />
+    <filter-actions connection-id="65827dc7-9c27-4b5a-be8a-6d3cd941493f" dataset="userdb.users" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -518,5 +518,8 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
   </component>
 </project>
