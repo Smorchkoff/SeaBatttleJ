@@ -7,7 +7,7 @@ public class Application {
     static String user = "root";
     static String pass = "root";
     public static void main(String[] args) {
-        Cell c = new Cell();
+        Field c = new Field();
         c.fillField();
         c.viewField();
         String query = "SELECT * FROM userdb.users";
@@ -34,9 +34,12 @@ public class Application {
     }
 
     //TODO Сделать реализацию выстрела
+    public void shoot(){
+
+    }
 
     public static void startGame() {
-       Cell c = new Cell();
+       Field c = new Field();
        Navy n = new Navy();
     }
 
