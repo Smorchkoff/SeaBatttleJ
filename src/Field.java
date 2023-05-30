@@ -4,8 +4,7 @@ public class Field {
     static final int SIZE = 10;                 // фиксированный размер поля для игры
     char[][] cells = new char[SIZE][SIZE];      // создание поля
     Navy navy = new Navy();
-    Ship[] arrShipOfCell;                       //Данному массиву присвоится массив кораблей
-                                                // созданных в классе FactoryShip
+    Ship[] arrShipOfCell;
 
     public void fillField() {
         for (int i = 0; i < SIZE; i++) {
@@ -28,6 +27,5 @@ public class Field {
 
     void autoInitField() {
         arrShipOfCell = navy.initShip();
-
     }
 }

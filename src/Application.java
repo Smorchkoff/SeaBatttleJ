@@ -40,7 +40,7 @@ public class Application {
 
     //TODO Сделать реализацию выстрела
     public void shoot(){
-
+        // TODO Заполнить shoot()
     }
 
     public static void startGame() {
