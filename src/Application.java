@@ -14,9 +14,6 @@ public class Application {
     static int loses;
     static User OneUser;
 
-
-
-
     public static void main(String[] args) throws Exception {
         Field c = new Field();
         c.fillField();
