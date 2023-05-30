@@ -24,3 +24,5 @@ public class Application {
 
     //TODO Сделать реализацию окончания игры
 }
+
+// TODO Пошёл нахуй
