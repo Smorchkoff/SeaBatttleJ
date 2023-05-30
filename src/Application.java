@@ -1,15 +1,20 @@
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.Scanner;
 
+/*
+* ЕСЛИ ЧТО-ТО КОММИТИШЬ, КОММИТЬ КОНКРЕТНЫЙ ФАЙЛ, А НЕ ВСЁ ПОДРЯД
+*/
+
+
+
 public class Application {
+    static Field field = new Field();
     static String url = "jdbc:mysql://localhost:3306/userdb";
     static String user = "root";
     static String pass = "root";
     public static void main(String[] args) {
-        Field c = new Field();
-        c.fillField();
-        c.viewField();
+        field.fillField();
+        field.viewField();
         String query = "SELECT * FROM userdb.users";
         try {
             Connection conn = DriverManager.getConnection(url,user, pass);
@@ -39,7 +44,6 @@ public class Application {
     }
 
     public static void startGame() {
-       Field c = new Field();
        Navy n = new Navy();
     }
 
