@@ -6,6 +6,22 @@ public class Field {
     Navy navy = new Navy();
     Ship[] arrShipOfCell;
 
+    public int getCell(int row, int col){
+        return cells[col][row];
+    }
+    public boolean isCellEmpty(int row, int col){
+        return cells[col][row] == '.'; // magic 0
+    }
+    public boolean isShipHealthy(int row, int col){
+        return cells[col][row] == 'o'; //magic 1
+    }
+    public boolean isShipWrecked(int row, int col){
+        return cells[col][row] == 'x'; // magic 2
+    }
+    public boolean isFreeCell(int row, int col){
+        return cells[col][row] == '.' || cells[col][row] == 'o';
+    }
+
     public void fillField() {
         for (int i = 0; i < SIZE; i++) {
             Arrays.fill(cells[i], '.');
