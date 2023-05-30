@@ -1,10 +1,15 @@
 public class Ship {
-    private int deck, xPosition, yPosition;
+    private int deck;
+    private int xPosition;
+    private int yPosition;
+    private boolean Direction;
 
-    Ship(int deck, int x, int y) {
+
+    Ship(int deck, int x, int y, boolean Direction) {
         this.deck = deck;
         this.xPosition = x;
         this.yPosition = y;
+        this.Direction = Direction;
     }
 
     public int getDeck() {
@@ -15,5 +20,8 @@ public class Ship {
     }
     public int getyPosition() {
         return yPosition;
+    }
+    public boolean isDirection(){
+        return Direction;
     }
 }
