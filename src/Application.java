@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        Cell c = new Cell();
+        Field c = new Field();
         c.fillField();
         c.viewField();
     }
@@ -16,9 +16,12 @@ public class Application {
     }
 
     //TODO Сделать реализацию выстрела
+    public void shoot(){
+
+    }
 
     public static void startGame() {
-       Cell c = new Cell();
+       Field c = new Field();
        Navy n = new Navy();
     }
 
