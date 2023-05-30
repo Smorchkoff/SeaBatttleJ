@@ -1,4 +1,3 @@
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -6,31 +5,54 @@ public class Application {
     static String url = "jdbc:mysql://localhost:3306/userdb";
     static String user = "root";
     static String pass = "root";
-    public static void main(String[] args) {
+    static Connection conn;
+    static String query;
+    static PreparedStatement stmt;
+    static ResultSet rs;
+    static String UserNickname;
+    static int wins;
+    static int loses;
+    static User OneUser;
+
+
+
+
+    public static void main(String[] args) throws Exception {
         Field c = new Field();
         c.fillField();
         c.viewField();
-        String query = "SELECT * FROM userdb.users";
-        try {
-            Connection conn = DriverManager.getConnection(url,user, pass);
-            Statement stmt = conn.createStatement();
-
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                System.out.println(rs.getString(2));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        OneUser = input();
+        endGame();
+        System.out.println(OneUser.wins);
     }
 
-    public static void input() {
-        String UserNickname;
+    public static User input() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите свой никнейм: ");
         UserNickname = sc.nextLine();
         User u = new User(UserNickname);
-        String query;
+        query = String.format("SELECT * FROM userdb.users where nickname = '%s'", UserNickname);
+        try {
+            conn = DriverManager.getConnection(url,user, pass);
+            stmt = conn.prepareStatement(query);
+
+            rs = stmt.executeQuery(query);
+            rs.next();
+            if (rs.getRow() != 0) {
+                u.nickName = rs.getString("nickname");
+                u.wins = rs.getInt("wins");
+                u.loses = rs.getInt("loses");
+                System.out.println(u.nickName);
+                System.out.println(u.wins);
+                System.out.println(u.loses);
+            } else {
+                stmt = conn.prepareStatement(String.format("INSERT INTO userdb.users VALUES (DEFAULT,'%s',0,0)",UserNickname));
+                stmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
     }
 
     //TODO Сделать реализацию выстрела
@@ -44,6 +66,25 @@ public class Application {
     }
 
     //TODO Сделать реализацию окончания игры
+    public static void endGame() throws SQLException,Exception {
+
+        if (isWinner("YES")){
+            OneUser.wins++;
+        } else{
+            OneUser.loses++;
+        }
+
+        query = String.format("UPDATE userdb.users SET wins = %d, loses = %d WHERE nickname = '%s'",OneUser.wins, OneUser.loses, OneUser.nickName);
+        stmt = conn.prepareStatement(query);
+        stmt.executeUpdate();
+    }
+
+    private static boolean isWinner(String Res) {
+        if (Res == "YES") {
+            return true;
+        }
+        return false;
+    }
 }
 
 // TODO Пошёл нахуй
