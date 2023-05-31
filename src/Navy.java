@@ -6,7 +6,7 @@ public class Navy {
     Random random = new Random();
     Ship ship;
     Ship[] arrShips = new Ship[10];
-    Ship[] initShip() {
+    static Ship[] initShip() {
         return new Ship[0];
     }
 
@@ -38,14 +38,7 @@ public class Navy {
         }
         return true;
     }
-    public boolean regShot(int row, int col){
-        if(field.isCellEmpty(row,col)){
-            field.cells[row][col] = '*';
-            return false;
-        }
 
-        return true;
-    }
     private boolean isShipAlive(int row, int col){
         int[] env = new int[]{-1,-1,-1,-1};
 
@@ -96,13 +89,20 @@ public class Navy {
         }
         return false;
     }
-    private void markKilledShip(int row, int col){
-        return;
-    }
+
     private boolean isShipVertical(int row, int col){
-        return isShipVertical(0,0);
+        int[] env = new int[] {-1, -1, -1, -1};
 
+        if(row != 0) env[0] = row - 1;
+        if(row != 9) env[1] = row + 1;
+        if(col != 0) env[2] = col - 1;
+        if(col != 9) env[3] = col + 1;
+
+        for(int i = 0; i < env.length; i++){
+            if(env[i] != -1){
+                if(field.cells[col][env[i]]  == 'o' || field.cells[col][env[i]] == 'x') return false;
+            }
+        }
+        return true;
     }
-
-
 }

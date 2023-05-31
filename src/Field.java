@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Field {
     static final int SIZE = 10;                 // фиксированный размер поля для игры
     char[][] cells = new char[SIZE][SIZE];      // создание поля
-    Navy navy = new Navy();
+
     Ship[] arrShipOfCell;
 
     public int getCell(int row, int col){
@@ -40,8 +40,15 @@ public class Field {
         }
         System.out.println();
     }
-
-    void autoInitField() {
-        arrShipOfCell = navy.initShip();
+    public boolean regShot(int row, int col){
+        if(isCellEmpty(row,col)){
+            cells[row][col] = '*';
+            return false;
+        }
+        cells[row][col] = 'x';
+        return true;
+    }
+    private void markKilledShip(int row, int col){
+        return;
     }
 }
