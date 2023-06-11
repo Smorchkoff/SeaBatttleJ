@@ -90,7 +90,7 @@ public class Navy {
         return false;
     }
 
-    private boolean isShipVertical(int row, int col){
+    public boolean isShipVertical(int row, int col){
         int[] env = new int[] {-1, -1, -1, -1};
 
         if(row != 0) env[0] = row - 1;
@@ -98,9 +98,9 @@ public class Navy {
         if(col != 0) env[2] = col - 1;
         if(col != 9) env[3] = col + 1;
 
-        for(int i = 0; i < env.length; i++){
-            if(env[i] != -1){
-                if(field.cells[col][env[i]]  == 'o' || field.cells[col][env[i]] == 'x') return false;
+        for (int j : env) {
+            if (j != -1) {
+                if (field.cells[col][j] == 'o' || field.cells[col][j] == 'x') return false;
             }
         }
         return true;
