@@ -4,22 +4,18 @@ class User {
     int wins = 0;
     int loses = 0;
 
+    User() {}
     User(String nickNameSet){
-        nickName = nickNameSet;
+        this.nickName = nickNameSet;
+    }
+    User(int wins, int loses){
+        this.wins = wins;
+        this.loses = loses;
     }
 
     User(String nickNameSet, int winsSet, int losesSet){
-        nickName = nickNameSet;
-        wins = winsSet;
-        loses = losesSet;
-    }
-
-    public void winLoseRatioCalc(int wins, int loses){
-        try{
-            winLoseRatio = ((double) wins /loses);
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage()+" - деление на ноль");
-        }
+        this.nickName = nickNameSet;
+        this.wins = winsSet;
+        this.loses = losesSet;
     }
 }

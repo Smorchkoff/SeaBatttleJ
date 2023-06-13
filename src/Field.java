@@ -9,30 +9,20 @@ public class Field {
     public int getCell(int row, int col) {
         return cells[col][row];
     }
-
+    // TODO Изменить логику присваивания на цифирную(класс Display)
     public boolean isCellEmpty(int row, int col) {
         return cells[col][row] == '.'; // magic 0
     }
-
     public boolean isShipHealthy(int row, int col) {
         return cells[col][row] == 'o'; //magic 1
     }
-
     public boolean isShipWrecked(int row, int col) {
         return cells[col][row] == 'x'; // magic 2
     }
-
     public boolean isFreeCell(int row, int col) {
         return cells[col][row] == '.' || cells[col][row] == 'o';
     }
-
-    public void fillField() {
-        for (int i = 0; i < SIZE; i++) {
-            Arrays.fill(cells[i], '.');
-        }
-        System.out.println();
-    }
-
+    // TODO Перенести viewField() в класс Display
     public void viewField() {
         System.out.println("  0 1 2 3 4 5 6 7 8 9");
         for (int i = 0; i < SIZE; i++) {
@@ -44,7 +34,7 @@ public class Field {
         }
         System.out.println();
     }
-
+    // TODO Изменить логику отображение на логику класса Display
     public boolean regShot(int row, int col) {
         if (isCellEmpty(row, col)) {
             cells[row][col] = '*';
@@ -53,7 +43,7 @@ public class Field {
         cells[row][col] = 'x';
         return true;
     }
-
+    // TODO Изменить логику отображение на логику класса Display
     private void markKilledShip(int row, int col) {
         Navy navy = new Navy();
         if (navy.isShipVertical(row, col)) {

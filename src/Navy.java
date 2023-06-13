@@ -10,7 +10,6 @@ public class Navy {
         return new Ship[0];
     }
 
-
     private boolean canSetShip(Ship ship){
 
         int minRow = Math.max(0, ship.getxPosition() - 1);
@@ -46,7 +45,7 @@ public class Navy {
         if(row != 9) env[1] = row - 1;
         if(col != 0) env[2] = col - 1;
         if(col != 9) env[3] = col - 1;
-
+        // TODO Изменить логику отображение на логику класса Display
         if(isShipVertical(row, col)) {
             for(int i = 2; i < env.length; i++){
                 if(env[i] != -1){
