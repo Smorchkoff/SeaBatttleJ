@@ -15,7 +15,6 @@ public class AI {
         if(radar.isFreeCell(row,col)){
             return radar.regShot(row,col);
         }
-
         shootAI();
         return false;
     }

@@ -1,7 +1,8 @@
 import java.util.*;
-public class Radar {
-    private final Field field;
-    private final Field radar;
+public class Player {
+    Scanner in = new Scanner(System.in);
+    private Field field;
+    private Field radar;
     final private String name;
     final public String[] commands = new String[]{
             "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
@@ -22,10 +23,28 @@ public class Radar {
         put("G", 6); put("H", 7);
         put("I", 8); put("J", 9);
     }};
-    public Radar(String name, Field field, Field radar){
+    public Player(String name, Field field, Field radar){
         this.name = name;
         this.field = field;
         this.radar = radar;
+    }
+    public boolean shoot() {
+        String command = in.nextLine();
+
+
+        if (Arrays.asList(commands).contains(command)) {
+            System.out.println(command.toUpperCase().charAt(0));
+
+            int row = commandMap.get((Character.toString(command.toUpperCase().charAt(0))));
+            int col = Integer.parseInt(Character.toString(command.charAt(1)));
+
+            if (radar.isFreeCell(row, col)) return radar.regShot(row, col);
+            else {
+                System.out.println("Your order is not clear?\n Try again");
+            }
+        }
+        shoot();
+        return false;
     }
     public Field getField() { return field; }
     public Field getRadar() { return radar; }

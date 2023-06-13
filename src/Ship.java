@@ -24,4 +24,13 @@ public class Ship {
     public boolean isDirection(){
         return Direction;
     }
+    @Override
+    public String toString(){
+        return "Ship{" +
+                "deck = " + deck +
+                ", x = " + xPosition +
+                ", y = " + yPosition +
+                ", rotate = " + Direction+
+                "}";
+    }
 }
