@@ -31,12 +31,11 @@ public class Player {
     public boolean shoot() {
         String command = in.nextLine();
 
-
         if (Arrays.asList(commands).contains(command)) {
             System.out.println(command.toUpperCase().charAt(0));
 
             int row = commandMap.get((Character.toString(command.toUpperCase().charAt(0))));
-            int col = Integer.parseInt(Character.toString(command.charAt(1)));
+            int col = Integer.parseInt(Character.toString(command.charAt(1)))-1;
 
             if (radar.isFreeCell(row, col)) return radar.regShot(row, col);
             else {

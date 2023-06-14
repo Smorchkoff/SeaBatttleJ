@@ -22,7 +22,7 @@ public class Game extends Database {
             display.viewField(playerOne.getField());
             display.displayRadar(playerOne.getRadar());
             if (playerOne.shoot()) {
-                out.println("Nice cock!");
+                out.println("Nice shot!");
                 continue;
             }
             while (true) {
